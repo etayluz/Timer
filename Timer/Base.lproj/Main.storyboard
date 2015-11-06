@@ -33,13 +33,16 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TimerBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ari-Or-FA9" userLabel="TimerBackground ImageView">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="152"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fsf-n9-Cjw">
-                                        <rect key="frame" x="129" y="125" width="43" height="25"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fsf-n9-Cjw" userLabel="Timer Button">
+                                        <rect key="frame" x="8" y="125" width="278" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="U2s-2I-feg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SlimJoe" family="Slim Joe" pointSize="13"/>
                                         <state key="normal" title="Start"/>
+                                        <connections>
+                                            <action selector="timerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H8y-dL-rtk"/>
+                                        </connections>
                                     </button>
                                     <pickerView contentMode="scaleToFill" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNY-lK-DdM" userLabel="Hour Picker View">
                                         <rect key="frame" x="2" y="-3" width="284" height="122"/>
@@ -53,19 +56,22 @@
                                 <constraints>
                                     <constraint firstItem="nNY-lK-DdM" firstAttribute="top" secondItem="7hm-FN-nZw" secondAttribute="top" constant="-3" id="0P7-m0-oCt"/>
                                     <constraint firstItem="Ari-Or-FA9" firstAttribute="leading" secondItem="nNY-lK-DdM" secondAttribute="leading" constant="-2" id="0km-KM-U4q"/>
-                                    <constraint firstItem="Ari-Or-FA9" firstAttribute="centerX" secondItem="Fsf-n9-Cjw" secondAttribute="centerX" id="DCQ-ad-jd8"/>
+                                    <constraint firstItem="Ari-Or-FA9" firstAttribute="centerX" secondItem="Fsf-n9-Cjw" secondAttribute="centerX" constant="3" id="DCQ-ad-jd8"/>
                                     <constraint firstAttribute="bottom" secondItem="Fsf-n9-Cjw" secondAttribute="bottom" constant="2" id="JIC-mh-mdU"/>
                                     <constraint firstAttribute="trailing" secondItem="Ari-Or-FA9" secondAttribute="trailing" id="TWu-sY-W5s"/>
                                     <constraint firstItem="Ari-Or-FA9" firstAttribute="leading" secondItem="7hm-FN-nZw" secondAttribute="leading" id="d78-oS-3vI"/>
                                     <constraint firstAttribute="width" secondItem="7hm-FN-nZw" secondAttribute="height" multiplier="75:38" id="k9k-zt-LqG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fsf-n9-Cjw" secondAttribute="trailing" constant="14" id="oTc-L5-fgd"/>
                                     <constraint firstItem="Fsf-n9-Cjw" firstAttribute="top" secondItem="nNY-lK-DdM" secondAttribute="bottom" constant="6" id="sZ3-NU-EwG"/>
                                     <constraint firstItem="nNY-lK-DdM" firstAttribute="trailing" secondItem="Ari-Or-FA9" secondAttribute="trailing" constant="-14" id="txe-lF-wGP"/>
                                     <constraint firstAttribute="height" constant="152" id="y69-vT-CdZ"/>
                                     <constraint firstItem="Ari-Or-FA9" firstAttribute="top" secondItem="7hm-FN-nZw" secondAttribute="top" id="yRu-vF-gQ0"/>
+                                    <constraint firstItem="Fsf-n9-Cjw" firstAttribute="leading" secondItem="7hm-FN-nZw" secondAttribute="leading" constant="8" id="zHg-2I-82o"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="k9k-zt-LqG"/>
+                                        <exclude reference="DCQ-ad-jd8"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -94,6 +100,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="300"/>
                     <connections>
+                        <outlet property="timerButton" destination="Fsf-n9-Cjw" id="UsH-5W-UQD"/>
                         <outlet property="timerPickerView" destination="nNY-lK-DdM" id="Itx-7K-XvZ"/>
                     </connections>
                 </viewController>
