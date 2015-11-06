@@ -39,7 +39,7 @@
                                             <constraint firstAttribute="height" constant="25" id="U2s-2I-feg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SlimJoe" family="Slim Joe" pointSize="13"/>
-                                        <state key="normal" title="Start"/>
+                                        <state key="normal" title="START"/>
                                         <connections>
                                             <action selector="timerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H8y-dL-rtk"/>
                                         </connections>
