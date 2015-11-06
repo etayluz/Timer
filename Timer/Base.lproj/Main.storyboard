@@ -14,15 +14,42 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nqv-GK-HfA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nqv-GK-HfA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="U9b-ki-6z7"/>
+                                    <constraint firstAttribute="height" constant="600" id="paa-Ld-nKo"/>
+                                </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hm-FN-nZw" userLabel="Timer View">
+                                <rect key="frame" x="0.0" y="50" width="300" height="152"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TimerBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ari-Or-FA9" userLabel="TimerBackground ImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="152"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Ari-Or-FA9" secondAttribute="bottom" id="Bvw-y9-dOj"/>
+                                    <constraint firstItem="Ari-Or-FA9" firstAttribute="leading" secondItem="7hm-FN-nZw" secondAttribute="leading" id="LiF-gM-JVI"/>
+                                    <constraint firstItem="Ari-Or-FA9" firstAttribute="top" secondItem="7hm-FN-nZw" secondAttribute="top" id="rl8-W7-ZAD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7hm-FN-nZw" firstAttribute="leading" secondItem="Nqv-GK-HfA" secondAttribute="leading" id="7io-i6-BF5"/>
+                            <constraint firstItem="7hm-FN-nZw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="MfE-ht-209"/>
+                            <constraint firstItem="7hm-FN-nZw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QNf-qK-j8e"/>
+                            <constraint firstItem="Nqv-GK-HfA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="d1l-yK-xAt"/>
+                            <constraint firstAttribute="trailing" secondItem="7hm-FN-nZw" secondAttribute="trailing" id="jj8-Fj-j3u"/>
+                        </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="300"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -30,6 +57,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TimerBackground.png" width="300" height="152"/>
         <image name="background.png" width="3" height="534"/>
     </resources>
 </document>
