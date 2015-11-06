@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="SlimJoe.otf">
@@ -10,10 +12,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Timer View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TimerViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -23,11 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nqv-GK-HfA">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="U9b-ki-6z7"/>
-                                    <constraint firstAttribute="height" constant="600" id="paa-Ld-nKo"/>
-                                </constraints>
+                                <rect key="frame" x="-4" y="0.0" width="308" height="300"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hm-FN-nZw" userLabel="Timer View">
                                 <rect key="frame" x="0.0" y="50" width="300" height="152"/>
@@ -36,33 +34,68 @@
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="152"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fsf-n9-Cjw">
-                                        <rect key="frame" x="128.5" y="125" width="43" height="25"/>
+                                        <rect key="frame" x="129" y="125" width="43" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="U2s-2I-feg"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="SlimJoe" family="Slim Joe" pointSize="13"/>
                                         <state key="normal" title="Start"/>
                                     </button>
+                                    <pickerView contentMode="scaleToFill" showsSelectionIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNY-lK-DdM" userLabel="Hour Picker View">
+                                        <rect key="frame" x="2" y="-3" width="284" height="122"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="qur-Hn-lFa"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="S8N-5u-6o7"/>
+                                        </connections>
+                                    </pickerView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.18415083239999999" blue="0.173902327" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Fsf-n9-Cjw" firstAttribute="bottom" secondItem="Ari-Or-FA9" secondAttribute="bottom" constant="-2" id="0BP-ES-uvW"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ari-Or-FA9" secondAttribute="bottom" id="Bvw-y9-dOj"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ari-Or-FA9" secondAttribute="trailing" id="GL4-S6-82o"/>
-                                    <constraint firstItem="Fsf-n9-Cjw" firstAttribute="centerX" secondItem="Ari-Or-FA9" secondAttribute="centerX" id="Lce-Zv-dTK"/>
-                                    <constraint firstItem="Ari-Or-FA9" firstAttribute="leading" secondItem="7hm-FN-nZw" secondAttribute="leading" id="LiF-gM-JVI"/>
-                                    <constraint firstItem="Ari-Or-FA9" firstAttribute="top" secondItem="7hm-FN-nZw" secondAttribute="top" id="rl8-W7-ZAD"/>
+                                    <constraint firstItem="nNY-lK-DdM" firstAttribute="top" secondItem="7hm-FN-nZw" secondAttribute="top" constant="-3" id="0P7-m0-oCt"/>
+                                    <constraint firstItem="Ari-Or-FA9" firstAttribute="leading" secondItem="nNY-lK-DdM" secondAttribute="leading" constant="-2" id="0km-KM-U4q"/>
+                                    <constraint firstItem="Ari-Or-FA9" firstAttribute="centerX" secondItem="Fsf-n9-Cjw" secondAttribute="centerX" id="DCQ-ad-jd8"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fsf-n9-Cjw" secondAttribute="bottom" constant="2" id="JIC-mh-mdU"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ari-Or-FA9" secondAttribute="trailing" id="TWu-sY-W5s"/>
+                                    <constraint firstItem="Ari-Or-FA9" firstAttribute="leading" secondItem="7hm-FN-nZw" secondAttribute="leading" id="d78-oS-3vI"/>
+                                    <constraint firstAttribute="width" secondItem="7hm-FN-nZw" secondAttribute="height" multiplier="75:38" id="k9k-zt-LqG"/>
+                                    <constraint firstItem="Fsf-n9-Cjw" firstAttribute="top" secondItem="nNY-lK-DdM" secondAttribute="bottom" constant="6" id="sZ3-NU-EwG"/>
+                                    <constraint firstItem="nNY-lK-DdM" firstAttribute="trailing" secondItem="Ari-Or-FA9" secondAttribute="trailing" constant="-14" id="txe-lF-wGP"/>
+                                    <constraint firstAttribute="height" constant="152" id="y69-vT-CdZ"/>
+                                    <constraint firstItem="Ari-Or-FA9" firstAttribute="top" secondItem="7hm-FN-nZw" secondAttribute="top" id="yRu-vF-gQ0"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="k9k-zt-LqG"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7hm-FN-nZw" firstAttribute="leading" secondItem="Nqv-GK-HfA" secondAttribute="leading" id="7io-i6-BF5"/>
-                            <constraint firstItem="7hm-FN-nZw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="MfE-ht-209"/>
-                            <constraint firstItem="7hm-FN-nZw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="QNf-qK-j8e"/>
-                            <constraint firstItem="Nqv-GK-HfA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="d1l-yK-xAt"/>
-                            <constraint firstAttribute="trailing" secondItem="7hm-FN-nZw" secondAttribute="trailing" id="jj8-Fj-j3u"/>
+                            <constraint firstItem="Nqv-GK-HfA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="O2a-lg-2tE"/>
+                            <constraint firstItem="7hm-FN-nZw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Tzr-PR-EL6"/>
+                            <constraint firstItem="Nqv-GK-HfA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="fhj-w0-i7l"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Nqv-GK-HfA" secondAttribute="bottom" id="hTh-zq-ewb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nqv-GK-HfA" secondAttribute="trailing" constant="-20" id="m8T-hi-L6m"/>
+                            <constraint firstAttribute="trailing" secondItem="7hm-FN-nZw" secondAttribute="trailing" id="ncF-XZ-kgh"/>
+                            <constraint firstItem="Nqv-GK-HfA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="spy-FN-EZ4"/>
+                            <constraint firstItem="7hm-FN-nZw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="sxe-i7-ohA"/>
+                            <constraint firstItem="Nqv-GK-HfA" firstAttribute="leading" secondItem="7hm-FN-nZw" secondAttribute="leading" id="t3j-Ke-5LF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7hm-FN-nZw" secondAttribute="bottom" constant="98" id="yz6-rV-UCu"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="O2a-lg-2tE"/>
+                                <exclude reference="t3j-Ke-5LF"/>
+                                <exclude reference="yz6-rV-UCu"/>
+                            </mask>
+                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="300"/>
+                    <connections>
+                        <outlet property="timerPickerView" destination="nNY-lK-DdM" id="Itx-7K-XvZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
