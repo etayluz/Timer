@@ -9,7 +9,7 @@
 import UIKit
 
 enum Component: Int {
-  case Hours = 0, Minutes, Seconds
+  case Minutes = 0, Seconds, MiliSeconds
 }
 
 
@@ -62,7 +62,7 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
   @IBAction func timerButtonPressed(sender: UIButton) {
     if timerButton.titleLabel?.text == "START" {
       timerButton.setTitle("STOP", forState: UIControlState.Normal)
-      timer = NSTimer.scheduledTimerWithTimeInterval(0.001, target: self, selector: "countDown", userInfo: nil, repeats: true)
+      timer = NSTimer.scheduledTimerWithTimeInterval(1/60, target: self, selector: "countDown", userInfo: nil, repeats: true)
       NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     else {
@@ -72,12 +72,17 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
   }
   
   func countDown() {
+    var miliSecondsSelectedRow = timerPickerView.selectedRowInComponent(Component.MiliSeconds.rawValue)
     var secondsSelectedRow = timerPickerView.selectedRowInComponent(Component.Seconds.rawValue)
     var minutesSelectedRow = timerPickerView.selectedRowInComponent(Component.Minutes.rawValue)
-    var hoursSelectedRow = timerPickerView.selectedRowInComponent(Component.Hours.rawValue)
 
-    secondsSelectedRow--
+    miliSecondsSelectedRow--
     
+    if (miliSecondsSelectedRow < 0)
+    {
+      miliSecondsSelectedRow = timerPickerData[Component.MiliSeconds.rawValue].count - 1
+      secondsSelectedRow--
+    }
     if (secondsSelectedRow < 0)
     {
       secondsSelectedRow = timerPickerData[Component.Seconds.rawValue].count - 1
@@ -86,16 +91,11 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     if (minutesSelectedRow < 0)
     {
       minutesSelectedRow = timerPickerData[Component.Minutes.rawValue].count - 1
-      hoursSelectedRow--
-    }
-    if (hoursSelectedRow < 0)
-    {
-      hoursSelectedRow = timerPickerData[Component.Hours.rawValue].count - 1
     }
     
+    self.timerPickerView.selectRow(miliSecondsSelectedRow, inComponent: Component.MiliSeconds.rawValue, animated: false)
     self.timerPickerView.selectRow(secondsSelectedRow, inComponent: Component.Seconds.rawValue, animated: false)
     self.timerPickerView.selectRow(minutesSelectedRow, inComponent: Component.Minutes.rawValue, animated: false)
-    self.timerPickerView.selectRow(hoursSelectedRow, inComponent: Component.Hours.rawValue, animated: false)
     
   }
   
