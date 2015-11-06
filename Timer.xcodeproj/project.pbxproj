@@ -14,6 +14,7 @@
 		B4F0ADC01BED09C600A1EB17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4F0ADBE1BED09C600A1EB17 /* LaunchScreen.storyboard */; };
 		B4F0ADCA1BED0EF200A1EB17 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F0ADC91BED0EF200A1EB17 /* background.png */; };
 		B4F0ADCC1BED124C00A1EB17 /* TimerBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F0ADCB1BED124C00A1EB17 /* TimerBackground.png */; };
+		B4F0ADCE1BED184800A1EB17 /* SlimJoe.otf in Resources */ = {isa = PBXBuildFile; fileRef = B4F0ADCD1BED181A00A1EB17 /* SlimJoe.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B4F0ADC11BED09C600A1EB17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4F0ADC91BED0EF200A1EB17 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		B4F0ADCB1BED124C00A1EB17 /* TimerBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TimerBackground.png; sourceTree = "<group>"; };
+		B4F0ADCD1BED181A00A1EB17 /* SlimJoe.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SlimJoe.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				B4F0ADBC1BED09C600A1EB17 /* Assets.xcassets */,
 				B4F0ADBE1BED09C600A1EB17 /* LaunchScreen.storyboard */,
 				B4F0ADC11BED09C600A1EB17 /* Info.plist */,
+				B4F0ADCD1BED181A00A1EB17 /* SlimJoe.otf */,
 				B4F0ADCB1BED124C00A1EB17 /* TimerBackground.png */,
 				B4F0ADC91BED0EF200A1EB17 /* background.png */,
 			);
@@ -131,6 +134,7 @@
 				B4F0ADC01BED09C600A1EB17 /* LaunchScreen.storyboard in Resources */,
 				B4F0ADCC1BED124C00A1EB17 /* TimerBackground.png in Resources */,
 				B4F0ADCA1BED0EF200A1EB17 /* background.png in Resources */,
+				B4F0ADCE1BED184800A1EB17 /* SlimJoe.otf in Resources */,
 				B4F0ADBD1BED09C600A1EB17 /* Assets.xcassets in Resources */,
 				B4F0ADBB1BED09C600A1EB17 /* Main.storyboard in Resources */,
 			);

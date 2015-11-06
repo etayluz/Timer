@@ -4,6 +4,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="SlimJoe.otf">
+            <string>SlimJoe</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -30,11 +35,18 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TimerBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ari-Or-FA9" userLabel="TimerBackground ImageView">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="152"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fsf-n9-Cjw">
+                                        <rect key="frame" x="128.5" y="125" width="43" height="25"/>
+                                        <fontDescription key="fontDescription" name="SlimJoe" family="Slim Joe" pointSize="13"/>
+                                        <state key="normal" title="Start"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.18415083239999999" blue="0.173902327" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Fsf-n9-Cjw" firstAttribute="bottom" secondItem="Ari-Or-FA9" secondAttribute="bottom" constant="-2" id="0BP-ES-uvW"/>
                                     <constraint firstAttribute="bottom" secondItem="Ari-Or-FA9" secondAttribute="bottom" id="Bvw-y9-dOj"/>
                                     <constraint firstAttribute="trailing" secondItem="Ari-Or-FA9" secondAttribute="trailing" id="GL4-S6-82o"/>
+                                    <constraint firstItem="Fsf-n9-Cjw" firstAttribute="centerX" secondItem="Ari-Or-FA9" secondAttribute="centerX" id="Lce-Zv-dTK"/>
                                     <constraint firstItem="Ari-Or-FA9" firstAttribute="leading" secondItem="7hm-FN-nZw" secondAttribute="leading" id="LiF-gM-JVI"/>
                                     <constraint firstItem="Ari-Or-FA9" firstAttribute="top" secondItem="7hm-FN-nZw" secondAttribute="top" id="rl8-W7-ZAD"/>
                                 </constraints>
