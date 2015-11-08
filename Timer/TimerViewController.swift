@@ -35,7 +35,6 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     secondCircle.backgroundColor = UIColor.clearColor()
     minuteCircle.backgroundColor = UIColor.clearColor()
     hourCircle.backgroundColor = UIColor.clearColor()
-    //drawCicles()
   }
   
   func countDown() {
@@ -107,7 +106,7 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
   
     if (pickerLabel == nil) {
       pickerLabel = UILabel()
-      pickerLabel?.font = UIFont(name: "SlimJoe", size: 30.0)
+      pickerLabel?.font = UIFont(name: "SlimJoe_NOT", size: 30.0)
       pickerLabel?.textColor = UIColor.whiteColor()
       pickerLabel?.textAlignment = NSTextAlignment.Center
     }
