@@ -26,63 +26,23 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    configureView()
+    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationHasChanged", name: UIDeviceOrientationDidChangeNotification, object: nil)
+  }
+
+  func configureView() {
     secondCircle.backgroundColor = UIColor.clearColor()
     minuteCircle.backgroundColor = UIColor.clearColor()
     hourCircle.backgroundColor = UIColor.clearColor()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationsHasChanged", name: UIDeviceOrientationDidChangeNotification, object: nil)
-  }
-
-  //MARK: - UIPickerView Delegates and data sources
-  func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-    return timerPickerData.count
-  }
-  func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return timerPickerData[component].count
-  }
-  
-  func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-    return 36.0
-  }
-  
-//  func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-//    let titleData = String(format:"%02d", timerPickerData[component][row])
-//    let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "SlimJoe", size: 30.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()])
-//    return myTitle
-//  }
-  
-  
-  func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView{
-    var pickerLabel = view as? UILabel;
-  
-    if (pickerLabel == nil) {
-      pickerLabel = UILabel()
-      pickerLabel?.font = UIFont(name: "SlimJoe", size: 30.0)
-      pickerLabel?.textColor = UIColor.whiteColor()
-      pickerLabel?.textAlignment = NSTextAlignment.Center
-    }
-
-    pickerLabel?.text = String(format:"%02d", timerPickerData[component][row])
-    return pickerLabel!;
-  }
-
-  //MARK: - Actions
-  @IBAction func timerButtonPressed(sender: UIButton) {
-    if timerButton.titleLabel?.text == "START" {
-      timerButton.setTitle("STOP", forState: UIControlState.Normal)
-      timer = NSTimer.scheduledTimerWithTimeInterval(1/100, target: self, selector: "countDown", userInfo: nil, repeats: true)
-      NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
-    }
-    else {
-      timerButton.setTitle("START", forState: UIControlState.Normal)
-      timer.invalidate()
-    }
+    //drawCicles()
   }
   
   func countDown() {
     var secondsSelectedRow = timerPickerView.selectedRowInComponent(Component.Seconds.rawValue)
     var minutesSelectedRow = timerPickerView.selectedRowInComponent(Component.Minutes.rawValue)
     var hoursSelectedRow = timerPickerView.selectedRowInComponent(Component.Hours.rawValue)
-
+    
     secondsSelectedRow--
     
     if (secondsSelectedRow < 0)
@@ -122,13 +82,58 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     CATransaction.commit()
   }
   
-  func orientationsHasChanged()
+  func orientationHasChanged()
   {
     secondCircle.drawRect(secondCircle.frame)
     minuteCircle.drawRect(minuteCircle.frame)
     hourCircle.drawRect(hourCircle.frame)
-
   }
 
+  
+  //MARK: - UIPickerView Delegates and data sources
+  func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    return timerPickerData.count
+  }
+  func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return timerPickerData[component].count
+  }
+  
+  func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    return 36.0
+  }
+  
+  func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView{
+    var pickerLabel = view as? UILabel;
+  
+    if (pickerLabel == nil) {
+      pickerLabel = UILabel()
+      pickerLabel?.font = UIFont(name: "SlimJoe", size: 30.0)
+      pickerLabel?.textColor = UIColor.whiteColor()
+      pickerLabel?.textAlignment = NSTextAlignment.Center
+    }
+
+    pickerLabel?.text = String(format:"%02d", timerPickerData[component][row])
+    return pickerLabel!;
+  }
+  
+  func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    drawCicles()
+  }
+
+
+  //MARK: - Actions
+  @IBAction func timerButtonPressed(sender: UIButton) {
+    if timerButton.titleLabel?.text == "START" {
+      timerButton.setTitle("STOP", forState: UIControlState.Normal)
+      timer = NSTimer.scheduledTimerWithTimeInterval(1/100, target: self, selector: "countDown", userInfo: nil, repeats: true)
+      NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+    }
+    else {
+      timerButton.setTitle("START", forState: UIControlState.Normal)
+      timer.invalidate()
+    }
+  }
+  
+ 
 }
 
