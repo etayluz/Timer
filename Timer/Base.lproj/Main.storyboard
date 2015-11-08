@@ -76,7 +76,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxK-6F-hjD" userLabel="Second CircleView" customClass="CircleView" customModule="Timer" customModuleProvider="target">
-                                <rect key="frame" x="113.5" y="212" width="73" height="73"/>
+                                <rect key="frame" x="113" y="212" width="73" height="73"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pxK-6F-hjD" secondAttribute="height" multiplier="1:1" id="Ktn-Yc-vNj"/>
@@ -85,8 +85,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pxK-6F-hjD" secondAttribute="bottom" constant="10" id="2EL-ju-kOn"/>
                             <constraint firstItem="pxK-6F-hjD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6UW-5f-0Ei"/>
                             <constraint firstItem="7hm-FN-nZw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Tzr-PR-EL6"/>
+                            <constraint firstItem="pxK-6F-hjD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="93.5" id="X22-yx-Mtk">
+                                <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                            </constraint>
                             <constraint firstAttribute="bottomMargin" secondItem="pxK-6F-hjD" secondAttribute="bottom" constant="15" id="chU-XX-mic"/>
                             <constraint firstItem="Nqv-GK-HfA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="fhj-w0-i7l"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Nqv-GK-HfA" secondAttribute="bottom" id="hTh-zq-ewb"/>
@@ -96,8 +100,25 @@
                             <constraint firstItem="Nqv-GK-HfA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="spy-FN-EZ4"/>
                             <constraint firstItem="7hm-FN-nZw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="sxe-i7-ohA"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="X22-yx-Mtk"/>
+                                <exclude reference="2EL-ju-kOn"/>
+                            </mask>
+                        </variation>
                         <variation key="widthClass=regular">
                             <mask key="constraints">
+                                <exclude reference="chU-XX-mic"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="2EL-ju-kOn"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="X22-yx-Mtk"/>
                                 <exclude reference="chU-XX-mic"/>
                             </mask>
                         </variation>
