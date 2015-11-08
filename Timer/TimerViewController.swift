@@ -9,14 +9,17 @@
 import UIKit
 
 enum Component: Int {
-  case Minutes = 0, Seconds, MiliSeconds
+  case Hours = 0, Minutes, Seconds
 }
 
 
 class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate  {
   @IBOutlet var timerPickerView: UIPickerView!
   @IBOutlet var timerButton: UIButton!
-  
+  @IBOutlet var secondCircle: CircleView!
+  @IBOutlet var minuteCircle: CircleView!
+  @IBOutlet var hourCircle: CircleView!
+
   var timer = NSTimer()
   let timerPickerData = [Array(1...24), Array(1...60), Array(1...60)]
   
@@ -49,7 +52,7 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
 //  
 //    if (pickerLabel == nil) {
 //      pickerLabel = UILabel()
-//      pickerLabel?.font = UIFont(name: "SlimJoe1", size: 30.0)
+//      pickerLabel?.font = UIFont(name: "SlimJoe", size: 30.0)
 //      pickerLabel?.textColor = UIColor.whiteColor()
 //      pickerLabel?.textAlignment = NSTextAlignment.Center
 //    }
@@ -57,12 +60,12 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
 //    pickerLabel?.text = String(format:"%02d", timerPickerData[component][row])
 //    return pickerLabel!;
 //  }
-  
+//  
   //MARK: - Actions
   @IBAction func timerButtonPressed(sender: UIButton) {
     if timerButton.titleLabel?.text == "START" {
       timerButton.setTitle("STOP", forState: UIControlState.Normal)
-      timer = NSTimer.scheduledTimerWithTimeInterval(1/60, target: self, selector: "countDown", userInfo: nil, repeats: true)
+      timer = NSTimer.scheduledTimerWithTimeInterval(1/10, target: self, selector: "countDown", userInfo: nil, repeats: true)
       NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     else {
@@ -72,34 +75,48 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
   }
   
   func countDown() {
-    var miliSecondsSelectedRow = timerPickerView.selectedRowInComponent(Component.MiliSeconds.rawValue)
     var secondsSelectedRow = timerPickerView.selectedRowInComponent(Component.Seconds.rawValue)
     var minutesSelectedRow = timerPickerView.selectedRowInComponent(Component.Minutes.rawValue)
+    var hoursSelectedRow = timerPickerView.selectedRowInComponent(Component.Hours.rawValue)
 
-    miliSecondsSelectedRow--
+    secondsSelectedRow--
     
-    if (miliSecondsSelectedRow < 0)
-    {
-      miliSecondsSelectedRow = timerPickerData[Component.MiliSeconds.rawValue].count - 1
-      secondsSelectedRow--
-    }
     if (secondsSelectedRow < 0)
     {
       secondsSelectedRow = timerPickerData[Component.Seconds.rawValue].count - 1
       minutesSelectedRow--
+      if (minutesSelectedRow < 0)
+      {
+        minutesSelectedRow = timerPickerData[Component.Minutes.rawValue].count - 1
+        hoursSelectedRow--
+        if (hoursSelectedRow < 0)
+        {
+          hoursSelectedRow = timerPickerData[Component.Hours.rawValue].count - 1
+        }
+        self.timerPickerView.selectRow(hoursSelectedRow, inComponent: Component.Hours.rawValue, animated: false)
+      }
+      self.timerPickerView.selectRow(minutesSelectedRow, inComponent: Component.Minutes.rawValue, animated: false)
     }
-    if (minutesSelectedRow < 0)
-    {
-      minutesSelectedRow = timerPickerData[Component.Minutes.rawValue].count - 1
-    }
-    
-    self.timerPickerView.selectRow(miliSecondsSelectedRow, inComponent: Component.MiliSeconds.rawValue, animated: false)
     self.timerPickerView.selectRow(secondsSelectedRow, inComponent: Component.Seconds.rawValue, animated: false)
-    self.timerPickerView.selectRow(minutesSelectedRow, inComponent: Component.Minutes.rawValue, animated: false)
     
+    drawCicles()
   }
   
-  
+  func drawCicles() {
+    let secondsSelectedRow = timerPickerView.selectedRowInComponent(Component.Seconds.rawValue)
+    let minuteSelectedRow = timerPickerView.selectedRowInComponent(Component.Minutes.rawValue)
+    let hourSelectedRow = timerPickerView.selectedRowInComponent(Component.Hours.rawValue)
+    
+    CATransaction.begin()
+    CATransaction.setDisableActions(true)
+    secondCircle.circleLayer.strokeEnd =
+      CGFloat(timerPickerData[Component.Seconds.rawValue].count - secondsSelectedRow) / CGFloat(timerPickerData[Component.Seconds.rawValue].count)
+//    minuteCircle.circleLayer.strokeEnd =
+//      CGFloat(timerPickerData[Component.Seconds.rawValue].count - minuteSelectedRow) / CGFloat(timerPickerData[Component.Seconds.rawValue].count)
+//    hourCircle.circleLayer.strokeEnd =
+//      CGFloat(timerPickerData[Component.Seconds.rawValue].count - hourSelectedRow) / CGFloat(timerPickerData[Component.Seconds.rawValue].count)
+    CATransaction.commit()
+  }
 
 }
 

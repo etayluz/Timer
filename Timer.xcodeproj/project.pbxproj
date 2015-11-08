@@ -15,6 +15,7 @@
 		B4F0ADCA1BED0EF200A1EB17 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F0ADC91BED0EF200A1EB17 /* background.png */; };
 		B4F0ADCC1BED124C00A1EB17 /* TimerBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B4F0ADCB1BED124C00A1EB17 /* TimerBackground.png */; };
 		B4F0ADCE1BED184800A1EB17 /* SlimJoe.otf in Resources */ = {isa = PBXBuildFile; fileRef = B4F0ADCD1BED181A00A1EB17 /* SlimJoe.otf */; };
+		B4F0ADD21BEEC8C200A1EB17 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F0ADD11BEEC8C200A1EB17 /* CircleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B4F0ADC91BED0EF200A1EB17 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		B4F0ADCB1BED124C00A1EB17 /* TimerBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TimerBackground.png; sourceTree = "<group>"; };
 		B4F0ADCD1BED181A00A1EB17 /* SlimJoe.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SlimJoe.otf; sourceTree = "<group>"; };
+		B4F0ADD11BEEC8C200A1EB17 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				B4F0ADB51BED09C600A1EB17 /* AppDelegate.swift */,
+				B4F0ADD11BEEC8C200A1EB17 /* CircleView.swift */,
 				B4F0ADB71BED09C600A1EB17 /* TimerViewController.swift */,
 				B4F0ADB91BED09C600A1EB17 /* Main.storyboard */,
 				B4F0ADBC1BED09C600A1EB17 /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4F0ADD21BEEC8C200A1EB17 /* CircleView.swift in Sources */,
 				B4F0ADB81BED09C600A1EB17 /* TimerViewController.swift in Sources */,
 				B4F0ADB61BED09C600A1EB17 /* AppDelegate.swift in Sources */,
 			);
