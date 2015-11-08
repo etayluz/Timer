@@ -73,11 +73,11 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     CATransaction.begin()
     CATransaction.setDisableActions(true)
     secondCircle.circleLayer.strokeEnd =
-      CGFloat(timerPickerData[Component.Seconds.rawValue].count - secondsSelectedRow) / CGFloat(timerPickerData[Component.Seconds.rawValue].count)
+      CGFloat(timerPickerData[Component.Seconds.rawValue].count - secondsSelectedRow - 1) / CGFloat(timerPickerData[Component.Seconds.rawValue].count)
     minuteCircle.circleLayer.strokeEnd =
-      CGFloat(timerPickerData[Component.Minutes.rawValue].count - minuteSelectedRow) / CGFloat(timerPickerData[Component.Minutes.rawValue].count)
+      CGFloat(timerPickerData[Component.Minutes.rawValue].count - minuteSelectedRow - 1) / CGFloat(timerPickerData[Component.Minutes.rawValue].count)
     hourCircle.circleLayer.strokeEnd =
-      CGFloat(timerPickerData[Component.Hours.rawValue].count - hourSelectedRow) / CGFloat(timerPickerData[Component.Hours.rawValue].count)
+      CGFloat(timerPickerData[Component.Hours.rawValue].count - hourSelectedRow - 1) / CGFloat(timerPickerData[Component.Hours.rawValue].count)
     CATransaction.commit()
   }
   
