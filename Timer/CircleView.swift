@@ -17,6 +17,9 @@ class CircleView: UIView {
     
     let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width - 10)/2, startAngle: 0.0, endAngle: CGFloat(M_PI * 2.0), clockwise: true)
     
+        if let theCircleLayer = circleLayer {
+              theCircleLayer.removeFromSuperlayer()
+        }
         // Setup the CAShapeLayer with the path, colors, and line width
         circleLayer = CAShapeLayer()
         circleLayer.path = circlePath.CGPath
@@ -34,5 +37,6 @@ class CircleView: UIView {
         // Add the circleLayer to the view's layer's sublayers
         layer.addSublayer(circleLayer)
   }
+
 }
 

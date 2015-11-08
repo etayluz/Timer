@@ -26,6 +26,7 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "rotated", name: UIDeviceOrientationDidChangeNotification, object: nil)
   }
 
   //MARK: - UIPickerView Delegates and data sources
@@ -116,6 +117,21 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
 //    hourCircle.circleLayer.strokeEnd =
 //      CGFloat(timerPickerData[Component.Seconds.rawValue].count - hourSelectedRow) / CGFloat(timerPickerData[Component.Seconds.rawValue].count)
     CATransaction.commit()
+  }
+  
+  func rotated()
+  {
+    secondCircle.drawRect(secondCircle.frame)
+//    if(UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation))
+//    {
+////      secondCircle = CircleView()
+//    }
+//    
+//    if(UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation))
+//    {
+////      secondCircle = CircleView()
+//    }
+    
   }
 
 }

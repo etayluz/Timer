@@ -75,9 +75,9 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxK-6F-hjD" userLabel="Second View" customClass="CircleView" customModule="Timer" customModuleProvider="target">
-                                <rect key="frame" x="22" y="212" width="256" height="256"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxK-6F-hjD" userLabel="Second CircleView" customClass="CircleView" customModule="Timer" customModuleProvider="target">
+                                <rect key="frame" x="113.5" y="212" width="73" height="73"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pxK-6F-hjD" secondAttribute="height" multiplier="1:1" id="Ktn-Yc-vNj"/>
                                 </constraints>
@@ -86,28 +86,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pxK-6F-hjD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6UW-5f-0Ei"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pxK-6F-hjD" secondAttribute="bottom" constant="5" id="DYQ-s1-j18"/>
-                            <constraint firstItem="Nqv-GK-HfA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="O2a-lg-2tE"/>
                             <constraint firstItem="7hm-FN-nZw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Tzr-PR-EL6"/>
-                            <constraint firstItem="pxK-6F-hjD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="YJv-xw-Rgg"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="pxK-6F-hjD" secondAttribute="bottom" constant="15" id="chU-XX-mic"/>
                             <constraint firstItem="Nqv-GK-HfA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="fhj-w0-i7l"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Nqv-GK-HfA" secondAttribute="bottom" id="hTh-zq-ewb"/>
-                            <constraint firstItem="pxK-6F-hjD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="6" id="k6n-jw-i40"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Nqv-GK-HfA" secondAttribute="trailing" constant="-20" id="m8T-hi-L6m"/>
                             <constraint firstItem="pxK-6F-hjD" firstAttribute="top" secondItem="7hm-FN-nZw" secondAttribute="bottom" constant="10" id="mzR-Zp-hh2"/>
                             <constraint firstAttribute="trailing" secondItem="7hm-FN-nZw" secondAttribute="trailing" id="ncF-XZ-kgh"/>
                             <constraint firstItem="Nqv-GK-HfA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="spy-FN-EZ4"/>
                             <constraint firstItem="7hm-FN-nZw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="sxe-i7-ohA"/>
-                            <constraint firstItem="Nqv-GK-HfA" firstAttribute="leading" secondItem="7hm-FN-nZw" secondAttribute="leading" id="t3j-Ke-5LF"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7hm-FN-nZw" secondAttribute="bottom" constant="98" id="yz6-rV-UCu"/>
                         </constraints>
-                        <variation key="default">
+                        <variation key="widthClass=regular">
                             <mask key="constraints">
-                                <exclude reference="O2a-lg-2tE"/>
-                                <exclude reference="t3j-Ke-5LF"/>
-                                <exclude reference="YJv-xw-Rgg"/>
-                                <exclude reference="DYQ-s1-j18"/>
-                                <exclude reference="yz6-rV-UCu"/>
+                                <exclude reference="chU-XX-mic"/>
                             </mask>
                         </variation>
                     </view>
