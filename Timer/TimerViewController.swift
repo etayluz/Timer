@@ -26,7 +26,10 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "rotated", name: UIDeviceOrientationDidChangeNotification, object: nil)
+    secondCircle.backgroundColor = UIColor.clearColor()
+    minuteCircle.backgroundColor = UIColor.clearColor()
+    hourCircle.backgroundColor = UIColor.clearColor()
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationsHasChanged", name: UIDeviceOrientationDidChangeNotification, object: nil)
   }
 
   //MARK: - UIPickerView Delegates and data sources
@@ -41,32 +44,32 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     return 36.0
   }
   
-  func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-    let titleData = String(format:"%02d", timerPickerData[component][row])
-    let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "SlimJoe", size: 30.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()])
-    return myTitle
-  }
-  
-  
-//  func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView{
-//    var pickerLabel = view as? UILabel;
-//  
-//    if (pickerLabel == nil) {
-//      pickerLabel = UILabel()
-//      pickerLabel?.font = UIFont(name: "SlimJoe", size: 30.0)
-//      pickerLabel?.textColor = UIColor.whiteColor()
-//      pickerLabel?.textAlignment = NSTextAlignment.Center
-//    }
-//
-//    pickerLabel?.text = String(format:"%02d", timerPickerData[component][row])
-//    return pickerLabel!;
+//  func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+//    let titleData = String(format:"%02d", timerPickerData[component][row])
+//    let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "SlimJoe", size: 30.0)!,NSForegroundColorAttributeName:UIColor.whiteColor()])
+//    return myTitle
 //  }
-//  
+  
+  
+  func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView{
+    var pickerLabel = view as? UILabel;
+  
+    if (pickerLabel == nil) {
+      pickerLabel = UILabel()
+      pickerLabel?.font = UIFont(name: "SlimJoe", size: 30.0)
+      pickerLabel?.textColor = UIColor.whiteColor()
+      pickerLabel?.textAlignment = NSTextAlignment.Center
+    }
+
+    pickerLabel?.text = String(format:"%02d", timerPickerData[component][row])
+    return pickerLabel!;
+  }
+
   //MARK: - Actions
   @IBAction func timerButtonPressed(sender: UIButton) {
     if timerButton.titleLabel?.text == "START" {
       timerButton.setTitle("STOP", forState: UIControlState.Normal)
-      timer = NSTimer.scheduledTimerWithTimeInterval(1/10, target: self, selector: "countDown", userInfo: nil, repeats: true)
+      timer = NSTimer.scheduledTimerWithTimeInterval(1/100, target: self, selector: "countDown", userInfo: nil, repeats: true)
       NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     else {
@@ -112,26 +115,19 @@ class TimerViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     CATransaction.setDisableActions(true)
     secondCircle.circleLayer.strokeEnd =
       CGFloat(timerPickerData[Component.Seconds.rawValue].count - secondsSelectedRow) / CGFloat(timerPickerData[Component.Seconds.rawValue].count)
-//    minuteCircle.circleLayer.strokeEnd =
-//      CGFloat(timerPickerData[Component.Seconds.rawValue].count - minuteSelectedRow) / CGFloat(timerPickerData[Component.Seconds.rawValue].count)
-//    hourCircle.circleLayer.strokeEnd =
-//      CGFloat(timerPickerData[Component.Seconds.rawValue].count - hourSelectedRow) / CGFloat(timerPickerData[Component.Seconds.rawValue].count)
+    minuteCircle.circleLayer.strokeEnd =
+      CGFloat(timerPickerData[Component.Minutes.rawValue].count - minuteSelectedRow) / CGFloat(timerPickerData[Component.Minutes.rawValue].count)
+    hourCircle.circleLayer.strokeEnd =
+      CGFloat(timerPickerData[Component.Hours.rawValue].count - hourSelectedRow) / CGFloat(timerPickerData[Component.Hours.rawValue].count)
     CATransaction.commit()
   }
   
-  func rotated()
+  func orientationsHasChanged()
   {
     secondCircle.drawRect(secondCircle.frame)
-//    if(UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation))
-//    {
-////      secondCircle = CircleView()
-//    }
-//    
-//    if(UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation))
-//    {
-////      secondCircle = CircleView()
-//    }
-    
+    minuteCircle.drawRect(minuteCircle.frame)
+    hourCircle.drawRect(hourCircle.frame)
+
   }
 
 }
